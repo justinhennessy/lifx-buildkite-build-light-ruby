@@ -45,16 +45,16 @@ post "/" do
   if buildkite_event == 'build.finished'
     if params['build']['state'] == 'passed'
       lifx_api.post "/v1/lights/#{settings.bulb_selector}/effects/breathe.json",
-        power_on:   false,
-        color:      "green brightness:75%",
-        from_color: "green brightness:10%",
-        period:     0.45,
+        power_on:   true,
+        color:      "green brightness:45%",
+        from_color: "green brightness:20%",
+        period:     1,
         cycles:     3,
         persist:    true,
         peak:       0.2
     else
       lifx_api.post "/v1/lights/#{settings.bulb_selector}/effects/breathe.json",
-        power_on:   false,
+        power_on:   true,
         color:      "red brightness:60%",
         from_color: "red brightness:25%",
         period:     0.1,
