@@ -46,8 +46,8 @@ post "/" do
     if params['build']['state'] == 'passed' && params['build']['state'] != 'canceled'
       lifx_api.post "/v1/lights/#{settings.bulb_selector}/effects/breathe.json",
         power_on:   true,
-        color:      "green brightness:45%",
-        from_color: "green brightness:20%",
+        color:      "green brightness:55%",
+        from_color: "green brightness:30%",
         period:     1,
         cycles:     3,
         persist:    true,
