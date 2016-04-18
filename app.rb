@@ -42,8 +42,8 @@ post "/" do
       persist:    true
   end
 
-  if buildkite_event == 'build.finished' && buildkite_event != 'build.canceled'
-    if params['build']['state'] == 'passed'
+  if buildkite_event == 'build.finished'
+    if params['build']['state'] == 'passed' && params['build']['state'] != 'canceled'
       lifx_api.post "/v1/lights/#{settings.bulb_selector}/effects/breathe.json",
         power_on:   true,
         color:      "green brightness:45%",
